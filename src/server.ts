@@ -10,6 +10,7 @@ import apiRoutes from './routes/apiRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 import socialRoutes from './routes/socialRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import indexerProxyRoutes from './routes/indexerProxyRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -52,6 +53,7 @@ app.use('/api', apiRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/social', socialRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/indexer', indexerProxyRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {

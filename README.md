@@ -34,8 +34,8 @@ cp .env.example .env
 Edit `.env`:
 ```env
 REDIS_URL=redis://default:password@your-redis-host:6379
-MOVEMENT_INDEXER_URL=https://hasura.testnet.movementnetwork.xyz/v1/graphql
-RAFFLE_CONTRACT_ADDRESS=0x01217f04807991f49109ef548639275de9462bc565895a115f0968edbda74db3
+MOVEMENT_INDEXER_URL=https://indexer.testnet.movementnetwork.xyz/v1/graphql
+RAFFLE_CONTRACT_ADDRESS=0x139b57d91686291b2b07d827a84fdc6cf81a80d29a8228a941c3b11fc66c59cf
 ```
 
 ### 3. Run Development Server

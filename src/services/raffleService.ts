@@ -3,18 +3,18 @@ import { apolloClient } from '../config/apollo.js';
 import { cacheService } from '../config/redis.js';
 
 const RAFFLE_CONTRACT_ADDRESS = process.env.RAFFLE_CONTRACT_ADDRESS || 
-  '0x01217f04807991f49109ef548639275de9462bc565895a115f0968edbda74db3';
+  '0x139b57d91686291b2b07d827a84fdc6cf81a80d29a8228a941c3b11fc66c59cf';
 
-// GraphQL query untuk raffle events - Filter for momeraffle module only
+// GraphQL query untuk raffle events - Filter for draw_v5 module only
 const GET_RAFFLE_EVENTS = gql`
   query GetRaffleEvents($contract_address: String!, $limit: Int!, $offset: Int!) {
     events(
       where: {
         account_address: { _eq: $contract_address }
         _or: [
-          { type: { _like: "%momeraffle::BuyTicketEvent%" } }
-          { type: { _like: "%momeraffle::CreateRaffleEvent%" } }
-          { type: { _like: "%momeraffle::FinalizeRaffleEvent%" } }
+          { type: { _like: "%draw_v5::BuyTicketEvent%" } }
+          { type: { _like: "%draw_v5::CreateRaffleEvent%" } }
+          { type: { _like: "%draw_v5::FinalizeRaffleEvent%" } }
         ]
       }
       order_by: { transaction_version: desc }
@@ -32,7 +32,7 @@ const GET_RAFFLE_EVENTS = gql`
   }
 `;
 
-// GraphQL query untuk user events - Filter for momeraffle module only
+// GraphQL query untuk user events - Filter for draw_v5 module only
 const GET_USER_EVENTS = gql`
   query GetUserEvents($user_address: String!, $limit: Int!) {
     events(
@@ -40,7 +40,7 @@ const GET_USER_EVENTS = gql`
         _and: [
           {
             _or: [
-              { type: { _like: "%momeraffle%" } }
+              { type: { _like: "%draw_v5%" } }
             ]
           }
           {

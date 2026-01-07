@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client/core'
 import fetch from 'cross-fetch';
 
 const MOVEMENT_INDEXER_URL = process.env.MOVEMENT_INDEXER_URL || 
-  'https://hasura.testnet.movementnetwork.xyz/v1/graphql';
+  'https://indexer.testnet.movementnetwork.xyz/v1/graphql';
 
 // Create cache without deprecated options
 const cache = new InMemoryCache({
@@ -70,7 +70,7 @@ export const apolloClient = new ApolloClient({
   },
 });
 
-// GraphQL Queries - Filter for momeraffle module only
+// GraphQL Queries - Filter for draw_v5 module only
 export const GET_ALL_RAFFLE_EVENTS = gql`
   query GetAllRaffleEvents($contract_address: String!, $limit: Int!, $offset: Int!) {
     events(
@@ -79,12 +79,12 @@ export const GET_ALL_RAFFLE_EVENTS = gql`
         _and: [
           {
             _or: [
-              { type: { _like: "%momeraffle::BuyTicketEvent%" } }
-              { type: { _like: "%momeraffle::CreateRaffleEvent%" } }
-              { type: { _like: "%momeraffle::FinalizeRaffleEvent%" } }
-              { indexed_type: { _like: "%momeraffle::BuyTicketEvent%" } }
-              { indexed_type: { _like: "%momeraffle::CreateRaffleEvent%" } }
-              { indexed_type: { _like: "%momeraffle::FinalizeRaffleEvent%" } }
+              { type: { _like: "%draw_v5::BuyTicketEvent%" } }
+              { type: { _like: "%draw_v5::CreateRaffleEvent%" } }
+              { type: { _like: "%draw_v5::FinalizeRaffleEvent%" } }
+              { indexed_type: { _like: "%draw_v5::BuyTicketEvent%" } }
+              { indexed_type: { _like: "%draw_v5::CreateRaffleEvent%" } }
+              { indexed_type: { _like: "%draw_v5::FinalizeRaffleEvent%" } }
             ]
           }
         ]

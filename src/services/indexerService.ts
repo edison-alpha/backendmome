@@ -3,10 +3,10 @@ import { Aptos, AptosConfig, Network } from '@aptos-labs/ts-sdk';
 import { cacheService } from '../config/redis.js';
 
 const RAFFLE_CONTRACT_ADDRESS = process.env.RAFFLE_CONTRACT_ADDRESS || 
-  '0x01217f04807991f49109ef548639275de9462bc565895a115f0968edbda74db3';
+  '0x139b57d91686291b2b07d827a84fdc6cf81a80d29a8228a941c3b11fc66c59cf';
 
-// Using momeraffle with security enhancements
-const RAFFLE_MODULE = 'momeraffle';
+// Using draw_v5 with security enhancements
+const RAFFLE_MODULE = 'draw_v5';
 const RAFFLE_ADMIN_ADDRESS = RAFFLE_CONTRACT_ADDRESS;
 
 // Initialize Aptos client for Movement
